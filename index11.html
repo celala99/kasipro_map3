@@ -171,7 +171,9 @@ const map = new google.maps.Map(document.getElementById('map'), {
 { title: "特別な場所", lat: 34.798896, lng: 137.623480, icon: "icon3.png", cursorPhotoUrl: "44-min.JPG", clickPhotoUrl: "44.JPG" },
 
 ]
-
+map.addListener('zoom_changed', function() {
+        updateMarkerIcons();
+    });
         const markers = [];
 
         locations.forEach(location => {
