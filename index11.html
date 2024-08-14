@@ -287,7 +287,8 @@ marker.addListener("touchstart", () => {
         marker.dispatchEvent(clickEvent);
     });
 
-    markers.push(marker);
+ markers.push({ marker: marker, location: location });
+
 }
 google.maps.event.addListenerOnce(map, 'tilesloaded', () => {
 updateMarkerIcons();
