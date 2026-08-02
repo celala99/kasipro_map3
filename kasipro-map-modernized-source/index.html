@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#102421">
+  <meta name="description" content="浜松の風景と記憶を写真でめぐる、可視化プロジェクトのマップ。">
+  <title>可視プロマップ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#map">地図へ移動</a>
+  <main class="app-shell">
+    <header class="brand glass">
+      <div class="brand-mark" aria-hidden="true"><img src="icon3.png" alt="" width="34" height="34"></div>
+      <div><p class="eyebrow">Hamamatsu Visual Stories</p><h1>可視プロマップ</h1></div>
+      <p class="photo-count"><strong id="photo-count">0</strong><span>stories</span></p>
+    </header>
+
+    <section class="map-frame" aria-label="写真マップ">
+      <div id="map" role="application" aria-label="浜松の写真スポット地図"></div>
+      <div id="loading" class="loading" role="status" aria-live="polite">
+        <span class="loader" aria-hidden="true"></span><span>地図を読み込んでいます</span>
+      </div>
+
+      <nav class="filters glass" aria-label="表示フィルター">
+        <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">すべて</button>
+        <button class="filter" type="button" data-filter="spring" aria-pressed="false">春</button>
+        <button class="filter" type="button" data-filter="summer" aria-pressed="false">夏</button>
+        <button class="filter" type="button" data-filter="autumn" aria-pressed="false">秋</button>
+        <button class="filter" type="button" data-filter="winter" aria-pressed="false">冬</button>
+      </nav>
+
+      <div class="map-actions">
+        <button id="fit-map" class="round-control glass" type="button" aria-label="すべての写真を表示" title="すべての写真を表示">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3H3v4M17 3h4v4M7 21H3v-4M17 21h4v-4"/></svg>
+        </button>
+        <button id="locate" class="round-control glass" type="button" aria-label="現在地を表示" title="現在地を表示">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+        </button>
+      </div>
+      <p id="map-status" class="map-status glass" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <dialog id="photo-modal" class="photo-modal" aria-labelledby="photo-title">
+    <div class="modal-card">
+      <button id="close-photo" class="modal-close" type="button" aria-label="写真を閉じる">×</button>
+      <div class="photo-stage"><span class="image-loader" aria-hidden="true"></span><img id="photo" alt="" decoding="async"></div>
+      <div class="photo-copy">
+        <p class="eyebrow">Visual Story</p>
+        <h2 id="photo-title"></h2>
+        <p id="photo-description"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <footer><p>© 2023 浜松学芸高校可視化プロジェクト</p></footer>
+  <noscript>このマップを表示するにはJavaScriptを有効にしてください。</noscript>
+  <script src="script.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAurLZCbmH21SW2KrIAsGX6CjeiTAKWHK4&callback=initMap"></script>
+</body>
+</html>
